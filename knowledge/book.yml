@@ -1,0 +1,9 @@
+title: Composer Repository
+uuid: 3f86f231-1a9f-42a0-87c0-c8e3e2420dba
+chapters:
+  -
+    id: general
+    title: General
+    pages:
+      - changelog
+      - readme

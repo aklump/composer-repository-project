@@ -1,0 +1,34 @@
+{
+  "name": "aklump/composer-repository",
+  "description": "Package for use with create-project and aklump/composer-repository-framework",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Aaron Klump",
+      "email": "sourcecode@intheloftstudios.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "repositories": [
+    {
+      "type": "github",
+      "url": "https://github.com/aklump/annotated-response"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/aklump/gitignore"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/aklump/easy-perms"
+    },
+    {
+      "type": "path",
+      "url": "/Users/aklump/Code/Projects/InTheLoftStudios/InTheLoftStudios/site-packages/framework"
+    }
+  ],
+  "require": {
+    "aklump/composer-repository-framework": "@dev"
+  },
+  "license": "BSD-3-Clause"
+}
