@@ -7,10 +7,15 @@ tags: ''
 
 ## Install
 
-* `./bin/install.sh`
-* `./bin/rebuild.sh`
-* `./bin/check_config.sh`
-* `./bin/start_dev_server.sh`
+* `{{ composer.create_project|raw }}`
+* `bin/install.sh`
+* Follow prompts for configuration.
+* Check config with `bin/check_config.sh`
+* Build with `bin/rebuild.sh`
+
+## Other Commands
+
+* `bin/start_dev_server.sh`
 
 ## Cron
 

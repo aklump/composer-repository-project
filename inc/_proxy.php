@@ -1,5 +1,5 @@
 <?php
-/** @var string $basename */
+/** @var string $path */
 if (!file_exists(__DIR__ . '/../inc/_bootstrap.php')) {
   echo PHP_EOL;
   echo "❌ Not built; try `bump build`." . PHP_EOL;
@@ -7,4 +7,6 @@ if (!file_exists(__DIR__ . '/../inc/_bootstrap.php')) {
   exit(1);
 }
 require_once __DIR__ . '/../inc/_bootstrap.php';
-require_once FRAMEWORK_DIR . '/bin/' . $basename;
+
+$path = preg_replace('#^' . ROOT . '#', FRAMEWORK_DIR, $path);
+require_once $path;
