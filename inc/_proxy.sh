@@ -4,7 +4,7 @@ source "$__DIR__/../inc/_bootstrap.sh"
 
 # Manipulate the path for the framework
 path=$(echo "$path" | sed "s|^$ROOT|$FRAMEWORK_DIR|")
-if [[ -z "${path##*.}" ]]; then
+if [[ ! "$path" =~ \.[^/]+$ ]]; then
   path="${path}.sh"
 fi
 

@@ -3,19 +3,19 @@ id: readme
 tags: ''
 -->
 
-# Composer Repository
+# {{ book.name }}
 
 ## Install
 
 * `{{ composer.create_project|raw }}`
-* `cd app && bin/install.sh`
+* `cd app && bin/install`
 * Open the configuration files and replace tokens as shown.
-* Check config using `bin/check_config.sh`
+* Check config using `bin/check_config`
 * Build repository using `bin/rebuild.php`
 
 ## Other Commands
 
-* `bin/start_dev_server.sh`
+* `bin/start_dev_server`
 
 ## Cron
 
