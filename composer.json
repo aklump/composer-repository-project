@@ -1,6 +1,6 @@
 {
-  "name": "aklump/composer-repository",
-  "description": "Package for use with create-project and aklump/composer-repository-framework",
+  "name": "aklump/composer-repository-project",
+  "description": "Create a new private Composer repository using aklump/composer-project-framework.",
   "type": "project",
   "authors": [
     {

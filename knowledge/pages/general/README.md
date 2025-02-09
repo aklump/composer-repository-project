@@ -8,10 +8,10 @@ tags: ''
 ## Install
 
 * `{{ composer.create_project|raw }}`
-* `bin/install.sh`
-* Follow prompts for configuration.
-* Check config with `bin/check_config.sh`
-* Build with `bin/rebuild.sh`
+* `cd app && bin/install.sh`
+* Open the configuration file and replace tokens as shown.
+* Check config using `bin/check_config.sh`
+* Build repository using `bin/rebuild.sh`
 
 ## Other Commands
 
