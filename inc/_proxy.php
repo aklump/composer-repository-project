@@ -22,4 +22,4 @@ if (!file_exists($path)) {
   echo PHP_EOL;
   exit(1);
 }
-require_once $path;
+require $path;
