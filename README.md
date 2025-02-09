@@ -6,7 +6,7 @@
 * `cd app && bin/install`
 * Open the configuration files and replace tokens as shown.
 * Check config using `bin/check_config`
-* Build repository using `bin/rebuild.php`
+* Build repository using `bin/rebuild`
 
 ## Other Commands
 
