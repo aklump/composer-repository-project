@@ -2,7 +2,7 @@
 
 ## Install
 
-* `composer create-project aklump/composer-repository:@dev app --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/composer-repository\"}"`
+* `composer create-project aklump/composer-repository:@dev app --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/composer-repository-project\"}"`
 * `bin/install.sh`
 * Follow prompts for configuration.
 * Check config with `bin/check_config.sh`
