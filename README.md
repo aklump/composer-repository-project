@@ -1,4 +1,4 @@
-# Composer Repository
+# Composer Repository Project
 
 ## Install
 
