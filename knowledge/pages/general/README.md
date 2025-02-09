@@ -3,7 +3,7 @@ id: readme
 tags: ''
 -->
 
-# {{ book.name }}
+# {{ book.title }}
 
 ## Install
 

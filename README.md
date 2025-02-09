@@ -1,4 +1,4 @@
-# {{ book.name }}
+# Composer Repository
 
 ## Install
 
