@@ -19,4 +19,9 @@ tags: ''
 
 ## Cron
 
-./vendor/aklump/composer-repository-framework/bin/on_cron.php
+$FRAMEWORK_DIR/bin/on_cron.php
+
+## satis.json
+
+* Never alter _data/satis.json_ directly.
+* To update name or homepage, you must edit _satis.json_
