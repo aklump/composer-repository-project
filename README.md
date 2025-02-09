@@ -2,11 +2,11 @@
 
 ## Install
 
-* `composer create-project aklump/composer-repository:@dev app --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/composer-repository-project\"}"`
-* `bin/install.sh`
-* Follow prompts for configuration.
-* Check config with `bin/check_config.sh`
-* Build with `bin/rebuild.sh`
+* `composer create-project aklump/composer-repository-project:@dev app --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/composer-repository-project\"}"`
+* `cd app && bin/install.sh`
+* Open the configuration file and replace tokens as shown.
+* Check config using `bin/check_config.sh`
+* Build repository using `bin/rebuild.sh`
 
 ## Other Commands
 
