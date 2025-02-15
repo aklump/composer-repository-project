@@ -22,7 +22,7 @@ tags: ''
 
 * Create a cronjob with the desired publish frequency, e.g.,
     ```
-    */15 * * * 1-6 /PATH/TO/app/bin/on_cron 1>/dev/null 2> >(mail -s "Cronjob Error" your_email@example.com) 
+    */15 * * * 1-6 /PATH/TO/app/bin/on_cron 2>&1 || mail -s "Cronjob Error" your_email@example.com)
     ```
 
 ## Add Your First Package
