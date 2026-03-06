@@ -2,6 +2,6 @@
 #  width: 1000
 composer:
   directory: app
-#image:
-#  max_width: 830
-#  pixel_density: 2
+image:
+  max_width: 830
+  pixel_density: 2
