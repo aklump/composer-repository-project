@@ -28,12 +28,15 @@ Like this:
 
 > Follow these installation steps directly on the server where you will be hosting your private repository.
 
-* `{{ composer.create_project|raw }}`
-* `cd app && bin/install`
-* Open the configuration files and replace tokens as shown.
-* Repository URL is the public URL where you are hosting the repository, it is not a GitHub project!
+```shell
+{{ composer.create_project|raw }}
+app/bin/install
+```
+
+* Open the configuration files and replace tokens as shown in the command output.
+* Repository URL is the public URL where you are hosting the repository, it is not a single GitHub project you wish to add.
 * Check config using `app/bin/check_config`
-* `chmod ugo-w .env`
+* Lock down your configuration file `chmod ugo-w .env`
 * Build repository using `app/bin/rebuild`
 * Visit the private repository URL to review build.
 
@@ -93,7 +96,14 @@ To manually remove a package from your private repository:
 
 ## How to Upgrade
 
-This must be done on your server, where you created the project.  You literally create a new project and copy over the old configuration.
+To update dependencies all you need to do is:
+
+```shell
+cd app
+composer update
+```
+
+To update `aklump/composer-repository-project` to a newer version, you will have to recreate the project. It's similiar to the initial installation, but you have to copy over existing config. On your server, where you created the project do the following:
 
 ```shell
 mv app app.previous
@@ -108,5 +118,14 @@ app/bin/rebuild
 ```
 
 After testing your result you may delete `app.previous`
+
+## Backup
+
+The following will create a zip file containing the minimum data necessary to recreate your project. Log files are not included.
+
+```shell
+app/bin/backup
+app/bin/backup --output=my_backup
+```
 
 {{ funding|raw }}
