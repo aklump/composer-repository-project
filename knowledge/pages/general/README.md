@@ -13,8 +13,7 @@ A wrapper for [composer/satis](https://composer.github.io/satis/) that makes it 
 
 For example:
 
-```
-json
+```json
 {
   "repositories": [
     {
@@ -29,8 +28,7 @@ json
 
 > Follow these installation steps directly on the server where you will host your private repository.
 
-```
-shell
+```shell
 {{ composer.create_project|raw }}
 app/bin/install
 ```
@@ -69,8 +67,7 @@ GitHub webhooks deliver package event data, but your private repository will not
 
 For example:
 
-```
-text
+```text
 */15 * * * 1-6 /PATH/TO/app/bin/on_cron 2>&1 || mail -s "Cronjob Error" your_email@example.com
 ```
 
@@ -105,16 +102,14 @@ To manually remove a package from your private repository:
 
 To update dependencies:
 
-```
-shell
+```shell
 cd app
 composer update
 ```
 
 To update `aklump/composer-repository-project` itself to a newer version, recreate the project and copy over your existing configuration. Run the following on the server where the project is installed:
 
-```
-shell
+```shell
 mv app app.previous
 {{ composer.create_project|raw }}
 app/bin/install
@@ -132,8 +127,7 @@ After testing, you may delete `app.previous`.
 
 The following commands create a zip archive containing the minimum data required to recreate your project. Log files are not included.
 
-```
-shell
+```shell
 app/bin/backup
 app/bin/backup --output=my_backup
 ```
