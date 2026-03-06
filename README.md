@@ -70,6 +70,8 @@ For example:
 
 Packages are added by creating a GitHub webhook.
 
+![add a package at github](images/add.png)
+
 1. Go to **Settings > Webhooks > Add webhook**.
 2. Set the URL to `{repository}/api/packages.php`, for example: `https://packages.example.com/api/packages.php`
 3. Set **Content type** to `application/json`.
