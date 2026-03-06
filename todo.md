@@ -7,5 +7,3 @@
 - convert to symfony console OR Tempest?
 - how to document REST API for /api/packages.php?
 - integrate that REST API with Knowledge
-
-https://eric.blog/2022/09/04/simple-github-webhook-handler-in-php/
