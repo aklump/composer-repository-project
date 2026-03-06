@@ -1,0 +1,30 @@
+file_permissions:
+  default: 0644
+  readonly: 0444
+  writeable: 0666
+  executable: 0744
+directory_permissions:
+  default: 0755
+  readonly: 0555
+  writeable: 0777
+  executable: 0755
+default:
+  - ../../**
+readonly:
+  - ../../.env
+writeable:
+  - ../../.cache
+  - ../../data
+  - ../../web/
+executable:
+  - ../../bin/bind_book.sh"
+  - ../../bin/check_config"
+  - ../../bin/install"
+  - ../../bin/on_cron"
+  - ../../bin/perms
+  - ../../bin/rebuild"
+  - ../../bin/remove"
+  - ../../bin/start_dev_server"
+  - ../../vendor/bin/satis
+  - ../../vendor/bin/easy-perms
+  - ../../vendor/bin/composer
