@@ -9,11 +9,12 @@ tags: ''
 
 ## Summary
 
-A wrapper for [composer/satis](https://composer.github.io/satis/) to make hosting your own Composer repository from GitHub packages easier. This allows you to **add only one repository entry** for all your custom packages you might want to use on a project, rather than many.
+A wrapper for [composer/satis](https://composer.github.io/satis/) that makes it easier to host your own Composer repository for GitHub packages. It lets you **add a single repository entry** for all of your custom packages instead of maintaining many separate entries.
 
-Like this:
+For example:
 
-```json
+```
+json
 {
   "repositories": [
     {
@@ -26,86 +27,94 @@ Like this:
 
 ## Install
 
-> Follow these installation steps directly on the server where you will be hosting your private repository.
+> Follow these installation steps directly on the server where you will host your private repository.
 
-```shell
+```
+shell
 {{ composer.create_project|raw }}
 app/bin/install
 ```
 
-* Open the configuration files and replace tokens as shown in the command output.
-* Repository URL is the public URL where you are hosting the repository, it is not a single GitHub project you wish to add.
-* Check config using `app/bin/check_config`
-* Lock down your configuration file `chmod ugo-w .env`
-* Build repository using `app/bin/rebuild`
-* Visit the private repository URL to review build.
+After installation:
+
+* Open the configuration files and replace the placeholder tokens shown in the command output.
+* The repository URL is the public URL where your Composer repository is hosted; it is **not** the URL of an individual GitHub project.
+* Check your configuration using `app/bin/check_config`.
+* Lock down your configuration file: `chmod ugo-w .env`
+* Build the repository using `app/bin/rebuild`.
+* Visit the repository URL in a browser to confirm the build completed successfully.
 
 ## Configuration
 
-Run `app/bin/check_config` at any time.
+Run `app/bin/check_config` at any time to validate your configuration.
 
 ### `app/.env`
 
-The main configuration file
+The main configuration file.
 
 ### `app/satis.json`
 
-This file serves as [the base](https://composer.github.io/satis/config) when your repository is built. Namely use to set the name or homepage of your private repository.
+This file serves as [the base Satis configuration](https://composer.github.io/satis/config) used when your repository is built. Use it to define things such as the repository name and homepage.
 
 ### Auto-generated
 
-Do not edit contents of these directories or you will loose your changes.
+Do not edit the contents of these directories or you will lose your changes.
 
 * `app/web`
 * `app/data`
 
 ## Cron
 
-The webhooks from Github will deliver data when they do, however, your private repository won't reflect the changes until it gets rebuilt. How often that occurs depends on the `on_cron` command configuration as shown below. You must setup a cronjob for automated rebuilds.
+GitHub webhooks deliver package event data, but your private repository will not reflect those changes until it is rebuilt. How often that happens depends on how you schedule `on_cron`. You must set up a cron job for automated rebuilds.
 
-* Create a cronjob with the desired publish frequency, e.g.,
-    ```
-    */15 * * * 1-6 /PATH/TO/app/bin/on_cron 2>&1 || mail -s "Cronjob Error" your_email@example.com)
-    ```
+For example:
+
+```
+text
+*/15 * * * 1-6 /PATH/TO/app/bin/on_cron 2>&1 || mail -s "Cronjob Error" your_email@example.com
+```
 
 ## Add a Package
 
-New packages are adding by creating a GitHub webhook.
+Packages are added by creating a GitHub webhook.
 
-1. Navigate to the GitHub repository for the package you want to add.
-1. Settings > Webhooks > Add webhook
-1. Set URL to the private repository URL appending `/api/packages.php`, e.g., `http://packages.intheloftstudios.com/api/packages.php`
-1. Set Content type: `application/json`
-1. Set the `secret` (find it in `.env` on your repository server).
-1. Choose: `Let me select individual events`
-1. Select `Branch or tag creation`
-1. Select `Branch or tag deletion`
-1. Wait for cron, or trigger it manually using `app/bin/on_cron.php`
+1. Go to **Settings > Webhooks > Add webhook**.
+2. Set the URL to `{repository}/api/packages.php`, for example: `https://packages.example.com/api/packages.php`
+3. Set **Content type** to `application/json`.
+4. Set the `secret` value using the one found in `.env` on your repository server.
+5. Select **Enable SSL verification**.
+6. Choose **Let me select individual events**.
+7. Select **Branch or tag creation**.
+8. Select **Branch or tag deletion**.
+9. Click **Add webhook**.
+10. Wait for cron to run, or trigger it manually using `app/bin/on_cron`.
 
 ### Inspect GitHub Webhook Deliveries
 
-The incoming data (from webhooks) are appended to `data/packages.log` on the private repository server. You may open that file to review.
+Incoming webhook data is appended to `data/packages.log` on the private repository server. You can review that file to inspect deliveries.
 
 ## Remove a Package
 
 To manually remove a package from your private repository:
 
-1. For the package you will remove, delete its github.com webhook you created originally, the one that points to your REPOSITORY_URL
-2. Shell in to your private repository server run `app/bin/remove <package_url>`
-3. Then run `app/bin/rebuild`
+1. Delete the GitHub webhook you originally created for that package — the one pointing to your repository URL.
+2. SSH into your private repository server and run `app/bin/remove <package_url>`.
+3. Run `app/bin/rebuild`.
 
 ## How to Upgrade
 
-To update dependencies all you need to do is:
+To update dependencies:
 
-```shell
+```
+shell
 cd app
 composer update
 ```
 
-To update `aklump/composer-repository-project` to a newer version, you will have to recreate the project. It's similiar to the initial installation, but you have to copy over existing config. On your server, where you created the project do the following:
+To update `aklump/composer-repository-project` itself to a newer version, recreate the project and copy over your existing configuration. Run the following on the server where the project is installed:
 
-```shell
+```
+shell
 mv app app.previous
 {{ composer.create_project|raw }}
 app/bin/install
@@ -117,13 +126,14 @@ app/bin/check_config
 app/bin/rebuild
 ```
 
-After testing your result you may delete `app.previous`
+After testing, you may delete `app.previous`.
 
 ## Backup
 
-The following will create a zip file containing the minimum data necessary to recreate your project. Log files are not included.
+The following commands create a zip archive containing the minimum data required to recreate your project. Log files are not included.
 
-```shell
+```
+shell
 app/bin/backup
 app/bin/backup --output=my_backup
 ```
