@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: BSD-3-Clause
+
 # Bootstrap
 ! [ -e "$__DIR__/../inc/_bootstrap.sh" ] && echo && echo "❌ Not built; try \`bump build\`." && echo && exit 1
 source "$__DIR__/../inc/_bootstrap.sh"

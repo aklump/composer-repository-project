@@ -1,4 +1,6 @@
 <?php
+// SPDX-License-Identifier: BSD-3-Clause
+
 # Bootstrap
 /** @var string $path */
 if (!file_exists(__DIR__ . '/../inc/_bootstrap.php')) {

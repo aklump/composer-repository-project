@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-3-Clause
 
 # @file
 # Place this in ./bin/perms to create a configured controller for aklump/easy-perms
