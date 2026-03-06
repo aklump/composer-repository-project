@@ -108,3 +108,5 @@ app/bin/rebuild
 ```
 
 After testing your result you may delete `app.previous`
+
+{{ funding|raw }}
